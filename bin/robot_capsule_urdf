@@ -1,0 +1,36 @@
+#!/usr/bin/env python
+
+import roslib; roslib.load_manifest('urdf_parser_py')
+import rospy
+
+import sys
+import commands
+import csv
+
+from urdf_parser_py.urdf import *
+
+robot_name = sys.argv[1]
+robot_description_path = commands.getoutput('rospack find ' + robot_name + '_description')
+robot_urdf_path = robot_description_path + '/urdf/' + robot_name + '.urdf'
+capsule_param_path = robot_description_path + '/etc/' + robot_name + '_capsule_param.csv'
+
+robot = URDF.load_xml_file(robot_urdf_path)
+links = robot.links
+
+param_reader = csv.reader(open(capsule_param_path, 'rb'), delimiter=' ', quotechar='|')
+
+for row in param_reader:
+    for link_name in links:
+        if row[0] == link_name:
+            cylinder = Cylinder (float (row[2]), float (row[1]))
+            links[link_name].collision.geometry = cylinder
+            links[link_name].collision.origin.position[0] = float (row[3])
+            links[link_name].collision.origin.position[1] = float (row[4])
+            links[link_name].collision.origin.position[2] = float (row[5])
+            links[link_name].collision.origin.rotation[0] = float (row[6])
+            links[link_name].collision.origin.rotation[1] = float (row[7])
+            links[link_name].collision.origin.rotation[2] = float (row[8])
+
+robot.links = links
+urdf = robot.to_xml ()
+print (urdf)
