@@ -4,13 +4,14 @@ import roslib; roslib.load_manifest('urdf_parser_py')
 import rospy
 
 import sys
-import commands
+import rospkg
 import csv
 
 from urdf_parser_py.urdf import *
 
 robot_name = sys.argv[1]
-robot_description_path = commands.getoutput('rospack find ' + robot_name + '_description')
+r = rospkg.RosPack()
+robot_description_path = r.get_path(robot_name + '_description')
 robot_urdf_path = robot_description_path + '/urdf/' + robot_name + '.urdf'
 capsule_param_path = robot_description_path + '/etc/' + robot_name + '_capsule_param.csv'
 
