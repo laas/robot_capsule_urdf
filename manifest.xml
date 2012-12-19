@@ -9,5 +9,7 @@
   <review status="experimental" notes=""/>
   <url>http://ros.org/wiki/robot_capsule_urdf</url>
 
+  <rosdep name="python-rospkg"/>
+
   <depend package="urdf_parser_py"/>
 </package>
