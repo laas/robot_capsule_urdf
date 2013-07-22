@@ -1,4 +1,5 @@
 <package>
+  <name>robot_capsule_urdf</name>
   <description brief="Robot Capsule URDF">
 
     Generation of capsule collision models urdf files.
