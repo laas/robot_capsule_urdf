@@ -24,7 +24,6 @@ SET(PROJECT_DESCRIPTION
 SET(PROJECT_URL https://github.com/laas/robot_capsule_urdf)
 SET(CUSTOM_HEADER_DIR ${PROJECT_NAME})
 
-INCLUDE(cmake/catkin.cmake)
 INCLUDE(cmake/base.cmake)
 INCLUDE(cmake/cpack.cmake)
 
@@ -35,6 +34,6 @@ SETUP_PROJECT()
 ADD_REQUIRED_DEPENDENCY(urdf_parser_py >= 0.3)
 INSTALL(PROGRAMS
   bin/robot_capsule_urdf
-  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+  DESTINATION ${CMAKE_INSTALL_BINDIR}
   )
 SETUP_PROJECT_FINALIZE()
