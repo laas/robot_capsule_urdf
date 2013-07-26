@@ -24,9 +24,9 @@ SET(PROJECT_DESCRIPTION
 SET(PROJECT_URL https://github.com/laas/robot_capsule_urdf)
 SET(CUSTOM_HEADER_DIR ${PROJECT_NAME})
 
+INCLUDE(cmake/catkin.cmake)
 INCLUDE(cmake/base.cmake)
 INCLUDE(cmake/cpack.cmake)
-INCLUDE(cmake/catkin.cmake)
 
 # Where to compile shared objects
 SET(LIBRARY_OUTPUT_PATH ${PROJECT_BINARY_DIR}/lib)
