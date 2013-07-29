@@ -48,16 +48,16 @@ param_reader = csv.reader(open(args.capsule_param.name, 'rb'),
                           delimiter=' ', quotechar='|')
 
 for row in param_reader:
-    for link_name in links:
-        if row[0] == link_name:
+    for link in links:
+        if row[0] == link.name:
             cylinder = Cylinder (float (row[2]), float (row[1]))
-            links[link_name].collision.geometry = cylinder
-            links[link_name].collision.origin.position[0] = float (row[3])
-            links[link_name].collision.origin.position[1] = float (row[4])
-            links[link_name].collision.origin.position[2] = float (row[5])
-            links[link_name].collision.origin.rotation[0] = float (row[6])
-            links[link_name].collision.origin.rotation[1] = float (row[7])
-            links[link_name].collision.origin.rotation[2] = float (row[8])
+            link.collision.geometry = cylinder
+            link.collision.origin.position[0] = float (row[3])
+            link.collision.origin.position[1] = float (row[4])
+            link.collision.origin.position[2] = float (row[5])
+            link.collision.origin.rotation[0] = float (row[6])
+            link.collision.origin.rotation[1] = float (row[7])
+            link.collision.origin.rotation[2] = float (row[8])
 
 robot.links = links
 urdf = robot.to_xml_string ()
