@@ -1,22 +1,28 @@
-# robot_capsule_urdf
-  Generation of capsule collision models urdf files.
+robot_capsule_urdf
+==================
+
+Generation of capsule collision models urdf files.
 
 
-## Quickstart:
+Quickstart
+----------
 
-  *  Compile robot_capsule_urdf by usual ros commands.
+ 1.  Compile `robot_capsule_urdf` by usual ros commands.
 
-  *  Given a robot description package in the form
-     robot_name_description, and given a capsule parameters file in
+ 1.  Given a robot description package in the form
+     `robot_name_description`, and given a capsule parameters file in
      robot_name_description/etc/robot_name_capasule_param you can run
      the following command to generate a new urdf file for your robot:
 
+     ```sh
      rosrun robot_capsule_urdf robot_capsule_urdf robot_name > robot_name_capsule.urdf
+     ```
 
-  * If you want to generate automatically the capsule urdf when
+ 1. If you want to generate automatically the capsule urdf when
     building robot_name_descrition, you can include the following in
-    CmakeLists.txt:
+    `CmakeLists.txt`:
 
+    ```sh
     rosbuild_find_ros_package(robot_capsule_urdf)
     set(_robot_capsule_urdf ${robot_capsule_urdf_PACKAGE_PATH}/bin/robot_capsule_urdf)
 
@@ -28,3 +34,4 @@
     endmacro()
 
     generate_capsule_urdf(robot_name)
+    ```
