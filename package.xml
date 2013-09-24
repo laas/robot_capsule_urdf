@@ -1,7 +1,7 @@
 <package>
   <name>robot_capsule_urdf</name>
   <description brief="Robot Capsule URDF">
-
+  <version>1.0.0</version>
     Generation of capsule collision models urdf files.
 
   </description>
