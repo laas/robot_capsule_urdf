@@ -1,16 +1,12 @@
 <package>
   <name>robot_capsule_urdf</name>
-  <description brief="Robot Capsule URDF">
   <version>1.0.0</version>
+  <description>
     Generation of capsule collision models urdf files.
-
   </description>
   <author>Antonio El Khoury</author>
+  <maintainer email="antonio.elkhoury@gmail.com">Antonio El Khoury</maintainer>
   <license>BSD</license>
-  <review status="experimental" notes=""/>
   <url>http://ros.org/wiki/robot_capsule_urdf</url>
 
-  <rosdep name="python-rospkg"/>
-
-  <depend package="urdf_parser_py"/>
 </package>
