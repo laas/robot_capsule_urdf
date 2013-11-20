@@ -40,7 +40,7 @@ args = parser.parse_args()
 if args.urdf_file is None:
     robot = URDF.from_parameter_server()
 else:
-    robot = URDF.from_xml_string(args.urdf_file.read())
+    robot = URDF.parse_xml_string(args.urdf_file.read())
 
 links = robot.links
 
@@ -48,7 +48,7 @@ param_reader = csv.reader(open(args.capsule_param.name, 'rb'),
                           delimiter=' ', quotechar='|')
 
 for row in param_reader:
-    for link in links:
+    for link in links.values():
         if row[0] == link.name:
             cylinder = Cylinder (float (row[2]), float (row[1]))
             link.collision.geometry = cylinder
@@ -60,5 +60,9 @@ for row in param_reader:
             link.collision.origin.rotation[2] = float (row[8])
 
 robot.links = links
-urdf = robot.to_xml_string ()
-print (urdf)
+urdf = robot.to_xml()
+
+if args.output != None:
+    args.output.write(urdf)
+else:
+    print (urdf)
